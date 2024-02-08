@@ -1,0 +1,64 @@
+@page
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+    <!--Beginfrom will take actin method and controller as a parameter
+        and it will take values of all input elements and forward it to the given method.-->
+    @using (Html.BeginForm("Register", "EmployeeRegistration"))
+    {
+        <div>
+            <table>
+                <tr>
+                    <td>Employee Name:</td>
+                    <td><input type="text" name="empname" /></td>
+                </tr>
+                <tr>
+                    <td>Employee Name2:</td>
+                    <td>@Html.TextBox("EmployeeName", null, new { placeholder = "Enter employee name" })</td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>@Html.RadioButton("Gender", "Male",true)Male</td>
+                    <td>@Html.RadioButton("Gender", "Female")Female</td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>@Html.DropDownList("Country",new List<SelectListItem>
+                   {
+                       new SelectListItem {Text = "Canada", Value="Canada", Selected=true },
+                       new SelectListItem {Text = "United states", Value="US" },
+                       new SelectListItem {Text = "United Kingdom", Value="UK" },
+                       new SelectListItem {Text = "China", Value="China" },
+                   })</td>
+                </tr>
+                <tr>
+                    <td>Terms and conditions:</td>
+                    <td>@Html.CheckBox("TnC",true)</td>
+                </tr>
+                <tr>
+                    <td>Date of birth:</td>
+                    <td>@Html.TextBox("DateOfBirth", "1980-10-13", new { @type = "date" })</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <input type="submit", value="Register Employee" />
+            @*<input type="button", value="Register Employee button event" />*@
+        </div>
+    }
+</body>
+</html>

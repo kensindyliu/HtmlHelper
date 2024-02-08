@@ -1,0 +1,36 @@
+@model Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    @using (Html.BeginForm("Register", "EmployeeRegistration"))
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                    <tr>
+                        <td>@Html.TextBox("EmployeeFirstName", @Model.EmployeeFirstName)</td>
+                        <td>@Html.TextBox("EmployeeFirstName", @Model.EmployeeLastName)</td>
+                        <td>@Html.TextBox("EmployeeFirstName", @Model.Country)</td>
+                    </tr>
+            </tbody>
+        </table>
+    }
+    </body>
+</html>
